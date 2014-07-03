@@ -15,7 +15,52 @@ boxes = [
     :instance_type  =>  'm3.medium'
   },
   {
-    :name           =>  'fv-erg-ipuppetca',
+    :name           =>  'fv-erg-puppetca',
+    :primary        =>  'false',
+    :instance_type  =>  'm3.medium'
+  },
+  {
+    :name           =>  'fv-erg-puppetdb',
+    :primary        =>  'false',
+    :instance_type  =>  'm3.medium'
+  },
+  {
+    :name           =>  'fv-erg-puppetlb',
+    :primary        =>  'false',
+    :instance_type  =>  'm3.medium'
+  },
+  {
+    :name           =>  'fv-erg-puppetmaster01',
+    :primary        =>  'false',
+    :instance_type  =>  'm3.medium'
+  },
+  {
+    :name           =>  'fv-erg-puppetmaster02',
+    :primary        =>  'false',
+    :instance_type  =>  'm3.medium'
+  },
+  {
+    :name           =>  'fv-erg-puppetmaster03',
+    :primary        =>  'false',
+    :instance_type  =>  'm3.medium'
+  },
+  {
+    :name           =>  'fv-erg-mcohub',
+    :primary        =>  'false',
+    :instance_type  =>  'm3.medium'
+  },
+  {
+    :name           =>  'fv-erg-mcospoke01',
+    :primary        =>  'false',
+    :instance_type  =>  'm3.medium'
+  },
+  {
+    :name           =>  'fv-erg-mcospoke02',
+    :primary        =>  'false',
+    :instance_type  =>  'm3.medium'
+  },
+  {
+    :name           =>  'fv-erg-mcospoke03',
     :primary        =>  'false',
     :instance_type  =>  'm3.medium'
   },
