@@ -1,0 +1,13 @@
+Add your SSH keys here
+======================
+
+You'll need:
+jump_key     - Jump host private key
+jump_key.pub - Jump host pub key
+YOUR_key.pub - Your AWS pub key
+
+WARNING: The provisioning scripts will overwrite the authorized_keys 
+for root and ec2-user. So make sure to copy your public keys here 
+(anything named *.pub here will be appended to all hosts' authorized 
+keys for thos two users).o
+
