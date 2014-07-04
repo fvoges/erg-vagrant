@@ -4,7 +4,7 @@ set -e
 
 cp /vagrant/keys/jump_key /root/.ssh/id_rsa
 
-yum -yq install gcc wget python python-devel git gpm-devel
+yum -y -q install gcc wget python python-devel git gpm-devel
 easy_install fabric
 
 curl https://raw.githubusercontent.com/fesplugas/rbenv-installer/master/bin/rbenv-installer | bash
