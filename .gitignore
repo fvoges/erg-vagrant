@@ -1,2 +1,6 @@
-pe-install
+/sync/keys/*_key*
+/sync/keys/*.pub
+.ssh_config
+/sync/pe-install
 .vagrant
+/misc
