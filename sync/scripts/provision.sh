@@ -2,7 +2,7 @@
 
 set -e
 
-yum -y -q update
+#yum -y -q update
 yum -y -q install ntp
 
 ntpdate -u us.pool.ntp.org
