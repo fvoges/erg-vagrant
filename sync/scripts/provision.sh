@@ -2,6 +2,8 @@
 
 set -e
 
+test -f /tmp/$(basename $0).run && exit 0
+
 #yum -y -q update
 yum -y -q install ntp
 
@@ -10,10 +12,13 @@ ntpdate -u us.pool.ntp.org
 cat /vagrant/keys/*.pub > ~root/.ssh/authorized_keys
 cat /vagrant/keys/*.pub > ~ec2-user/.ssh/authorized_keys
 
-PE_VER=3.2.3
-PE_TAR=puppet-enterprise-${PE_VER}-el-6-x86_64.tar.gz
+cat >> /root/.ssh/config <<EOF
 
-mkdir -p /tmp/pe-install
-cp -r /vagrant/pe-install/. /tmp/pe-install
-curl -qLo /tmp/pe-install/${PE_TAR} https://s3.amazonaws.com/pe-builds/released/${PE_VER}/${PE_TAR}
+Host *
+  BatchMode yes
+  StrictHostKeyChecking no
+
+EOF
+
+touch /tmp/$(basename $0).run
 
