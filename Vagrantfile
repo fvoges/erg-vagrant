@@ -16,7 +16,7 @@ boxes = [
     :extra_script   =>  '/vagrant/scripts/jumphost.sh',
     :subnet_id      =>  'subnet-d46f8da3',
     :private_ip     =>  '10.0.0.10',
-    :elastic_ip     =>  'true',
+    :public_ip      =>  'true',
   },
   {
     :name           =>  'fv-erg-puppetca',
@@ -24,7 +24,7 @@ boxes = [
     :instance_type  =>  'm3.medium',
     :subnet_id      =>  'subnet-d46f8da3',
     :private_ip     =>  '10.0.0.11',
-    :elastic_ip     =>  'true',
+    :public_ip      =>  'true',
   },
   {
     :name           =>  'fv-erg-puppetdb',
@@ -32,13 +32,13 @@ boxes = [
     :instance_type  =>  'm3.medium',
     :subnet_id      =>  'subnet-d46f8da3',
     :private_ip     =>  '10.0.0.12',
-    :elastic_ip     =>  'true',
+    :public_ip      =>  'true',
   },
 #  {
 #    :name           =>  'fv-erg-puppetlb',
 #    :primary        =>  'false',
 #    :instance_type  =>  'm3.medium',
-#    :elastic_ip     =>  'true',
+#    :public_ip     =>  'true',
 #  },
   {
     :name           =>  'fv-erg-puppetmaster01',
@@ -46,7 +46,7 @@ boxes = [
     :instance_type  =>  'm3.medium',
     :subnet_id      =>  'subnet-d46f8da3',
     :private_ip     =>  '10.0.0.13',
-    :elastic_ip     =>  'true',
+    :public_ip      =>  'true',
   },
   {
     :name           =>  'fv-erg-puppetmaster02',
@@ -54,7 +54,7 @@ boxes = [
     :instance_type  =>  'm3.medium',
     :subnet_id      =>  'subnet-d46f8da3',
     :private_ip     =>  '10.0.0.14',
-    :elastic_ip     =>  'true',
+    :public_ip      =>  'true',
   },
   {
     :name           =>  'fv-erg-puppetmaster03',
@@ -62,7 +62,7 @@ boxes = [
     :instance_type  =>  'm3.medium',
     :subnet_id      =>  'subnet-d46f8da3',
     :private_ip     =>  '10.0.0.15',
-    :elastic_ip     =>  'true',
+    :public_ip      =>  'true',
   },
   {
     :name           =>  'fv-erg-mcohub',
@@ -70,7 +70,7 @@ boxes = [
     :instance_type  =>  'm3.medium',
     :subnet_id      =>  'subnet-d46f8da3',
     :private_ip     =>  '10.0.0.16',
-    :elastic_ip     =>  'true',
+    :public_ip      =>  'true',
   },
   {
     :name           =>  'fv-erg-mcospoke01',
@@ -78,7 +78,7 @@ boxes = [
     :instance_type  =>  'm3.medium',
     :subnet_id      =>  'subnet-d46f8da3',
     :private_ip     =>  '10.0.0.17',
-    :elastic_ip     =>  'true',
+    :public_ip      =>  'true',
   },
   {
     :name           =>  'fv-erg-mcospoke02',
@@ -86,7 +86,7 @@ boxes = [
     :instance_type  =>  'm3.medium',
     :subnet_id      =>  'subnet-d46f8da3',
     :private_ip     =>  '10.0.0.18',
-    :elastic_ip     =>  'true',
+    :public_ip      =>  'true',
   },
   {
     :name           =>  'fv-erg-mcospoke03',
@@ -94,14 +94,14 @@ boxes = [
     :instance_type  =>  'm3.medium',
     :subnet_id      =>  'subnet-d46f8da3',
     :private_ip     =>  '10.0.0.19',
-    :elastic_ip     =>  'true',
+    :public_ip      =>  'true',
   },
 
 ]
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
-BOX_TIMEOUT             = 180
+BOX_TIMEOUT             = 300
 
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -134,7 +134,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         if box[:subnet_id]
           aws.subnet_id                         = box[:subnet_id]
           aws.private_ip_address                = box[:private_ip]
-          aws.associate_public_ip               = box[:elastic_ip]
+          aws.associate_public_ip               = box[:public_ip]
 
           # We want to setup /etc/hosts with the private IPs
           node.hostmanager.ip_resolver = proc do |vm, resolving_vm|
